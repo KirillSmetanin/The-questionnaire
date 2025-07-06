@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сюрприз на 8 марта!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            color: #e91e63;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: auto;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 20px;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #d81b60;
+        }
+        .optional {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .hidden {
+            display: none;
+        }
+        .romantic-text {
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .radio-group input[type="radio"] {
+            margin-right: 10px;
+            width: 10px;
+        }
+    </style>
+
+    <!-- Подключаем EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Инициализация EmailJS
+        (function() {
+            emailjs.init({
+              publicKey: "wLHpvuw-TBVHxvlUv",
+            });
+        })();
+    </script>
+</head>
+<body>
+    <h1>Сюрприз на 8 марта! 💐</h1>
+    <p class="romantic-text">
+        Дорогая подруга,<br>
+        Сегодня особенный день и я подготовил для тебя небольшой сюрприз.<br>
+        Есть ответы после которых открываются доп. вопросы 😊<br>
+        Потом можешь посмотреть в коде или поотвечать потом<br>
+        😊 Для начала отвечай как думаешь, потом потестишь 😊
+    </p>
+    <form id="survey-form">
+        <label>Имя</label>
+        <textarea name="user_name"></textarea>
+
+        <label>1. Что для тебя значит этот праздник?</label>
+        <textarea name="question1" ></textarea>
+
+        <label>2. Как ты обычно проводишь праздничные дни?</label>
+        <textarea name="question2" ></textarea>
+
+        <label>3. Твоя любимая еда?</label>
+        <textarea name="question3" ></textarea>
+
+        <label>4. Твои любимые сладости?</label>
+        <textarea name="question4" ></textarea>
+
+        <label>5. Сколько цветов ты хочешь? (Напиши цифру)</label>
+        <input type="number" name="question5" >
+
+        <label>6. Ты веришь в судьбу или в то, что случайные знакомства могут стать чем-то большим?</label>
+        <div class="radio-group">
+            <label>
+                <input type="radio" name="question6" value="Да" > Да
+            </label>
+            <label>
+                <input type="radio" name="question6" value="Нет" > Нет
+            </label>
+        </div>
+
+        <div id="sub-question-6-1" class="hidden">
+            <label>6.1. Хочешь встетиться?</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="question6-1" value="Да" > Да
+                </label>
+                <label>
+                    <input type="radio" name="question6-1" value="Нет" > Нет
+                </label>
+            </div>
+        </div>
+
+        <div id="sub-question-6-1-1" class="hidden">
+            <label>6.1.1. Где?</label>
+            <textarea name="question6-1-1"></textarea>
+
+            <label>6.1.2. Когда? (Могу завтра)</label>
+            <textarea name="question6-1-2"></textarea>
+
+            <label>6.1.3. Твои пожелания?</label>
+            <textarea name="question6-1-3"></textarea>
+        </div>
+
+        <label>7. Ты любишь стихи?</label>
+        <div class="radio-group">
+            <label>
+                <input type="radio" name="question7" value="Да" > Да
+            </label>
+            <label>
+                <input type="radio" name="question7" value="Нет" > Нет
+            </label>
+        </div>
+        
+        <div id="sub-question-7-1" class="hidden">
+            <div class="romantic-text">
+                <p>Ты в университете дни проводишь,<br>
+                Мечтая, рисуя, гитару учишь.<br>
+                Онлайн-друзья, далеки, но близки,<br>
+                В игре вы команда, в жизни — стихи.</p>
+            
+                <p>Но хочется встреч, тепла, разговоров,<br>
+                Чтоб мир был не только экранов узор.<br>
+                Ты книги читаешь, но время бежит,<br>
+                Рисунки заброшены, где-то лежат.</p>
+            
+                <p>Фильмы, мультфильмы — ностальгии мотив,<br>
+                А в городе редко бывает разлив.<br>
+                Ты не пьешь, не куришь, и это твой стиль,<br>
+                Эмоции ловишь, как ветра порыв.</p>
+            
+                <p>Ты ищешь не страсти, а искренний свет,<br>
+                Чтоб кто-то был рядом, как в жизни совет.<br>
+                Чтоб друг стал опорой, поддержкой, стеной,<br>
+                И вместе шагали в мир, полный красок иной.</p>
+            
+                <p>Так пусть же гитара звучит в тишине,<br>
+                И книги вернутся в твоей тишине.<br>
+                А дружба, что началась в сети одной,<br>
+                Может, станет началом истории иной.</p>
+            </div>
+
+            <label>7.1. Напиши что думаешь</label>
+            <textarea name="question7-1"></textarea>
+        
+            <label>7.2. Хочешь, чтобы я написал что-то еще?</label>
+            <textarea name="question7-2"></textarea>
+        </div>
+
+        <label>8. Тебе нравиться общаться со мной?</label>
+        <div class="radio-group">
+            <label>
+                <input type="radio" name="question8" value="Да" > Да
+            </label>
+            <label>
+                <input type="radio" name="question8" value="Нет" > Нет
+            </label>
+        </div>
+
+        <div id="sub-question-8-1" class="hidden">
+            <label>8.1. Тогда могу ли я задать пару вопросов для себя?</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="question8-1" value="Да" > Да
+                </label>
+                <label>
+                    <input type="radio" name="question8-1" value="Нет" > Нет
+                </label>
+            </div>
+        </div>
+
+        <div id="sub-question-8-1-1" class="hidden">
+            <label>8.1.1. Приятно и не напрягает ли что я тебе пишу доброе утро, споки ноки?</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="question8-1-1" value="Норм" > Норм
+                </label>
+                <label>
+                    <input type="radio" name="question8-1-1" value="Не норм" > Не норм
+                </label>
+            </div>
+
+            <label>8.1.2. Хочешь начать чаще общаться со мной?</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="question8-1-2" value="Да" > Да
+                </label>
+                <label>
+                    <input type="radio" name="question8-1-2" value="Нет" > Нет
+                </label>
+            </div>
+
+            <label>8.1.3. Твоё сердечко занято?</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="question8-1-3" value="Да" > Да
+                </label>
+                <label>
+                    <input type="radio" name="question8-1-3" value="Нет" > Нет
+                </label>
+            </div>
+
+            <label>8.1.4. Ты считаешь себя романтиком или реалистом?</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="question8-1-4" value="Романтик" > Романтик
+                </label>
+                <label>
+                    <input type="radio" name="question8-1-4" value="Реалист" > Реалист
+                </label>
+            </div>
+            <div id="sub-question-8-1-4" class="hidden">
+                <div class="romantic-text">Я тоже 😘</div>
+            </div>
+        </div>
+
+        <div id="sub-question-8-2" class="hidden">
+            <label>8.2. Что ты думаешь обо мне?</label>
+            <textarea name="question8-2"></textarea>
+        </div>
+
+        <div id="sub-question">
+            <div class="romantic-text">
+                <p>Спасибо, что ответила на мои вопросы! Ты сделала мой день ярче. <br>
+                <p>Хочешь, чтобы я тоже ответил на что-то?
+            </div>
+            <textarea name="question"></textarea>
+        </div>
+
+        <input type="submit" value="Отправить ответы">
+    </form>
+
+    <script>
+        function toggleSubQuestions() {
+            const question6 = document.querySelector('input[name="question6"]:checked');
+            const question6_1 = document.querySelector('input[name="question6-1"]:checked');
+            const question7 = document.querySelector('input[name="question7"]:checked');
+            const question8 = document.querySelector('input[name="question8"]:checked');
+            const question8_1 = document.querySelector('input[name="question8-1"]:checked');
+            const question8_1_4 = document.querySelector('input[name="question8-1-4"]:checked');
+
+            document.getElementById('sub-question-6-1').classList.toggle('hidden', question6?.value !== 'Да');
+            document.getElementById('sub-question-6-1-1').classList.toggle('hidden', question6_1?.value !== 'Да');
+            document.getElementById('sub-question-7-1').classList.toggle('hidden', question7?.value !== 'Да');
+            document.getElementById('sub-question-8-1').classList.toggle('hidden', question8?.value !== 'Да');
+            document.getElementById('sub-question-8-2').classList.toggle('hidden', question8?.value !== 'Да');
+            document.getElementById('sub-question-8-1-1').classList.toggle('hidden', question8_1?.value !== 'Да');
+            document.getElementById('sub-question-8-1-4').classList.toggle('hidden', question8_1_4?.value !== 'Романтик');
+        }
+
+        // Функция для отправки формы через EmailJS
+        function sendForm(event) {
+            event.preventDefault();
+
+            // Собираем данные из формы
+            const formData = new FormData(event.target);
+            const data = {};
+            let message = ""; // Создаем переменную для сообщения
+
+            formData.forEach((value, key) => {
+                data[key] = value;
+                message += `${key}: ${value}\n`; // Добавляем каждый ответ в сообщение
+            });
+
+            // Добавляем сообщение в объект данных
+            data.message = message;
+
+            // Предположим, у вас есть поле ввода с name="user_name"
+            const userName = document.querySelector('textarea[name="user_name"]').value;
+
+            // Записываем значение в переменную name
+            let from_name = userName;
+
+            // Отправка через EmailJS
+            emailjs.send("service_mtja35r", "template_fraaiq9", data) // Замените на ваш Service ID и Template ID
+                .then(() => {
+                    alert("Спасибо! Твои ответы отправлены. 💖");
+                }, (error) => {
+                    alert("Произошла ошибка при отправке. Пожалуйста, попробуй ещё раз.");
+                    console.error("Ошибка:", error);
+                });
+        }
+
+        // Инициализация после загрузки DOM
+        document.addEventListener('DOMContentLoaded', function() {
+            // Добавляем обработчики для радиокнопок
+            document.querySelectorAll('input[type="radio"]').forEach(input => {
+                input.addEventListener('change', toggleSubQuestions);
+            });
+
+            // Добавляем обработчик для отправки формы
+            const surveyForm = document.getElementById('survey-form');
+            if (surveyForm) {
+                surveyForm.addEventListener('submit', sendForm);
+            } else {
+                console.error("Форма с ID 'survey-form' не найдена.");
+            }
+        });
+    </script>
+</body>
+</html>
